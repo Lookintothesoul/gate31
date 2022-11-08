@@ -1,0 +1,165 @@
+body {
+    margin: 0;
+    width: 100%;
+    height: 100vh;
+
+    font-size: 14pt;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.main {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.main-header {
+    display: flex;
+    justify-content: flex-end;
+}
+
+#searchInput {
+    height: 26px;
+
+    border-radius: 0.25rem;
+    border: 1px solid gray;
+    padding-left: 0.5rem;
+    padding-right: 0.75rem;
+}
+
+.search-container > button {
+    height: 30px;
+    width: 60px;
+
+    border-radius: 0.25rem;
+    background-color: white;
+    border: 1px solid gray;
+    cursor: pointer;
+    transition: background-color .4s, scale .2s, color 0.4s;
+}
+
+.search-container > button:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0px 0px 5px 0px #b0b0b0;
+}
+
+.search-container > button:active {
+    scale: 0.95;
+}
+
+.main-body {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 282px;
+    height: 212px;
+    padding: 0.5rem;
+    border: 1px solid gray;
+    user-select: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: background-color .4s, box-shadow .2s, scale .3s, color 0.4s;
+}
+
+.card:hover {
+    background-color: #f1f1f1;
+    box-shadow: 0px 0px 10px 2px #b0b0b0;
+}
+
+.card:active {
+    scale: 0.95;
+}
+
+.card.selected-card {
+    background-color: #6d6d6da9;
+    color: white;
+}
+
+.card.selected-card:hover {
+    background-color: #858585;
+}
+
+.card-title {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-title > label {
+    overflow: hidden;
+    font-weight: 700;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-right: 1rem;
+}
+
+/* Кастомный чекбокс */
+.card-checkbox {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.card-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.layer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: white;
+    border: 1px solid #dbdbdb;
+    transition: background-color 0.2s;
+}
+
+.card-checkbox:hover input ~ .layer {
+    background-color: rgb(231, 231, 231);
+}
+
+.card-checkbox input:checked ~ .layer {
+    background-color: white;
+}
+
+.layer:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.card-checkbox input:checked ~ .layer:after {
+    display: block;
+}
+
+.card-checkbox .layer:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid #636363;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
