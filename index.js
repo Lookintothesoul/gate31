@@ -19,7 +19,7 @@ window.onload = getPosts = async () => {
         .then(result => drawPosts(result))
     
     const filters = getObjectFromQueryString(window.location.search)
-    reDrawPosts(filters.optionTitle)
+    reDrawPosts(filters.optionTitle ? filters.optionTitle : "")
 }
 
 const reDrawPosts = (filters) => {
@@ -30,7 +30,7 @@ const reDrawPosts = (filters) => {
             let el = document.querySelector(`.option-${options[i]}`)
             let checkBoxEl = document.getElementById(`option-${options[i]}`)
             if (el) {
-                el.classList.remove('disabled-post')
+                el.classList.remove('hidden-post')
                 checkBoxEl.checked = true
                 selectFiltersArr.push(Number(options[i]))
             }
@@ -38,7 +38,7 @@ const reDrawPosts = (filters) => {
     } else {
         let els = document.querySelectorAll('.card')
         for (let i = 0; i < els.length; i++) {
-            els[i].classList.remove('disabled-post')
+            els[i].classList.remove('hidden-post')
         }
     }
 }
@@ -49,7 +49,7 @@ const drawPosts = (data) => {
 
     for (let i = 0; i < data.length; i++) {
         let div = `
-            <div class="card option-${i} disabled-post">
+            <div class="card option-${i} hidden-post">
                 <div class="card-title">
                     <label>${data[i].title}</label>
                     <span>${data[i].body}</span>
@@ -114,9 +114,6 @@ const searchResult = () => {
 }
 
 const clearFilter = () => {
-    console.log('selectFiltersArr', selectFiltersArr)
-    if (selectFiltersArr.length > 0) {
-        selectFiltersArr.length = 0
-        window.location.search = changeFilter("")
-    }
+    selectFiltersArr.length = 0
+    window.location.search = changeFilter("")
 }

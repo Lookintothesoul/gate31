@@ -146,7 +146,7 @@ body {
     white-space: nowrap;
 }
 
-.card.disabled-post {
+.card.hidden-post {
     display: none;
 }
 
