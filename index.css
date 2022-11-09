@@ -16,7 +16,13 @@ body {
 
 .main-header {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-bottom: 1px solid grey;
+}
+
+.main-header > div {
+    border-bottom: 1px solid grey;
 }
 
 #searchInput {
@@ -28,24 +34,68 @@ body {
     padding-right: 0.75rem;
 }
 
-.search-container > button {
-    height: 30px;
-    width: 60px;
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+}
 
+.search-container > div > button {
     border-radius: 0.25rem;
     background-color: white;
-    border: 1px solid gray;
+    border: none;
     cursor: pointer;
-    transition: background-color .4s, scale .2s, color 0.4s;
+    transition: background-color .4s, scale .2s, color 0.2s;
+    font-size: 14pt;
 }
 
-.search-container > button:hover {
-    background-color: #f1f1f1;
-    box-shadow: 0px 0px 5px 0px #b0b0b0;
+.search-container > div > button:hover {
+    color: #858585;
+}
+.search-container > div > button > svg:hover {
+    color: #858585;
 }
 
-.search-container > button:active {
+.search-container > div > button:active {
     scale: 0.95;
+    color: black;
+}
+
+.filters-container {
+    display: flex;
+    font-size: 14pt;
+    gap: 0.5rem;
+    border: none;
+    margin: 0;
+    padding: 0;
+    
+    user-select: none;
+}
+
+.filters-container > div {
+    max-width: 300px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    text-decoration: underline;
+    transition: background-color .4s, scale .2s, color 0.2s;
+    margin: 0;
+    padding: 0;
+    border: none;
+}
+
+.filters-container > div:hover {
+    cursor: pointer;
+    color: #858585;
+}
+
+.filters-container > div:active {
+    scale: 0.95;
+    color: black;
+}
+
+.filters-container > div.selected-filter {
+    color: #858585;
 }
 
 .main-body {
@@ -68,7 +118,7 @@ body {
 
 .card:hover {
     background-color: #f1f1f1;
-    box-shadow: 0px 0px 10px 2px #b0b0b0;
+    box-shadow: 0 0 10px 2px #b0b0b0;
 }
 
 .card:active {
@@ -94,6 +144,10 @@ body {
     font-weight: 700;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+
+.card.disabled-post {
+    display: none;
 }
 
 .main-footer {
@@ -132,6 +186,25 @@ body {
     background-color: white;
     border: 1px solid #dbdbdb;
     transition: background-color 0.2s;
+}
+
+.filters-container .layer {
+    top: 0;
+    height: 20px;
+    width: 20px;
+}
+
+.filter-option > label {
+    cursor: pointer;
+}
+
+.filter-option > label:last-child {
+    padding-left: 32px;
+}
+
+.filter-option span:after {
+    left: 6px !important;
+    top: 3px !important;
 }
 
 .card-checkbox:hover input ~ .layer {
