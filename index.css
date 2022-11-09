@@ -61,8 +61,14 @@ body {
     color: black;
 }
 
+.search-container > div:last-child {
+    display: flex;
+    align-items: flex-start;
+}
+
 .filters-container {
     display: flex;
+    flex-wrap: wrap;
     font-size: 14pt;
     gap: 0.5rem;
     border: none;
@@ -99,9 +105,11 @@ body {
 }
 
 .main-body {
-    display: flex;
+    display: grid;
     gap: 1rem;
-    flex-wrap: wrap;
+    grid-template-columns: repeat(auto-fill, 300px);
+    grid-auto-flow: row;
+    justify-content: center;
 }
 
 .card {
