@@ -1,6 +1,7 @@
 let countEl = document.getElementById('cardCount')
 let formEl = document.getElementById('titleFilter')
 let filterContainer = document.querySelector('.filters-container')
+
 let selectFiltersArr = []
 
 const getObjectFromQueryString = search => Object.fromEntries(new URLSearchParams(search).entries())
@@ -20,6 +21,7 @@ window.onload = getPosts = async () => {
     
     const filters = getObjectFromQueryString(window.location.search)
     reDrawPosts(filters.optionTitle ? filters.optionTitle : "")
+    document.getElementById('mainLoader').classList.add('loader-h')
 }
 
 const reDrawPosts = (filters) => {
@@ -99,8 +101,6 @@ const selectFilter = (el) => {
     } else {
         selectFiltersArr.push(optionValue)
     }
-    
-    console.log('selectFiltersArr', selectFiltersArr)
 }
 
 let getCountSelectedCard = () => countEl.textContent = document.querySelectorAll('.selected-card').length
